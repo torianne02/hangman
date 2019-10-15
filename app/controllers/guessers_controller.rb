@@ -13,7 +13,7 @@ class GuessersController < ApplicationController
   private
 
   def guesser_params 
-    params.permit(:initials)
+    params.permit(:initials, :password)
   end 
 
 end 
