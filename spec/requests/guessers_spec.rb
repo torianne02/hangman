@@ -21,5 +21,5 @@ RSpec.describe GuessersController, type: :request do
         expect(json['message']).to match(/Account created successfully/)
       end
     end
-  end 
-end 
+  end # POST signup 
+end # RSpec 
