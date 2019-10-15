@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_15_170403) do
+ActiveRecord::Schema.define(version: 2019_10_15_225022) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "guessers", force: :cascade do |t|
     t.string "initials"
+    t.string "password_digest"
   end
 
   create_table "secret_keepers", force: :cascade do |t|
