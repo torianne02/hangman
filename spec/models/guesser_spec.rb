@@ -6,4 +6,5 @@ RSpec.describe Guesser, type: :model do
 
   # validation test
   it { should validate_presence_of(:initials) }
+  it { should validate_presence_of(:password) }
 end 
