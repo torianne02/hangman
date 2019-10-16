@@ -21,5 +21,17 @@ RSpec.describe GuessersController, type: :request do
         expect(json['message']).to match(/Account created successfully/)
       end
     end
+
+    context 'when invalid request' do
+      before { post '/signup', params: {} }
+
+      it 'does not create a new guesser' do 
+        expect(response).to have_http_status(422)
+      end 
+
+      it 'returns a failure message' do
+        expect(json['message']).to match(/Validation failed: Password can't be blank, Initials can't be blank/)
+      end 
+    end 
   end # POST signup 
 end # RSpec 
