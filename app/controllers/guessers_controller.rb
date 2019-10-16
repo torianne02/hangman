@@ -13,6 +13,11 @@ class GuessersController < ApplicationController
     json_response(@guesser)
   end 
 
+  # PUT /guessers/:id
+  def update 
+    @guesser.update(guesser_params)
+  end 
+
   private
 
   def guesser_params 
