@@ -1,5 +1,5 @@
 class GuessersController < ApplicationController
-  before_action :set_guesser, only: [:show, :update, :destory]
+  before_action :set_guesser, only: [:show, :update, :destroy]
 
   # POST /signup
   def create 
@@ -17,6 +17,11 @@ class GuessersController < ApplicationController
   def update 
     @guesser.update(guesser_params)
   end 
+
+  # DELETE /guessers/:id
+  def destroy 
+    @guesser.destroy
+  end
 
   private
 
