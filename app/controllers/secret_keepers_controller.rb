@@ -1,0 +1,3 @@
+class SecretKeepersController < ApplicationController
+  
+end 
