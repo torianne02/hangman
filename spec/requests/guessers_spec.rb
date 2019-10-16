@@ -79,4 +79,13 @@ RSpec.describe GuessersController, type: :request do
       end 
     end
   end # PUT guessers/:id
+
+  # test suite for DELETE /guessers/:id
+  describe 'DELETE /guessers/:id' do 
+    before { delete "/guessers/#{guesser_id}", params: {} }
+
+    it 'returns status code 204' do
+      expect(response).to have_http_status(204)
+    end 
+  end # DELETE guessers/:id
 end # RSpec 
