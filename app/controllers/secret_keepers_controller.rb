@@ -13,6 +13,11 @@ class SecretKeepersController < ApplicationController
     json_response(@secret_keeper)
   end 
 
+  # PUT /guessers/:guesser_id/secret_keepers/:id
+  def update 
+    @secret_keeper.update(secret_keeper_params)
+  end
+
   private
 
   def secret_keeper_params
