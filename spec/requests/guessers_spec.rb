@@ -34,4 +34,21 @@ RSpec.describe GuessersController, type: :request do
       end 
     end 
   end # POST signup 
+
+  # test suite for GET /guessers/:id
+  describe 'GET /guessers/:id' do
+    before { get "/guessers/#{guesser_id}", params: {} }
+
+    context 'when the record exists' do
+      it 'returns the user' do 
+        expect(json).not_to be_empty
+        expect(json['id']).to eq(guesser_id)
+      end 
+
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end 
+
+  end # GET guessers/:id
 end # RSpec 
