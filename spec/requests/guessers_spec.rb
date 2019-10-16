@@ -67,7 +67,7 @@ RSpec.describe GuessersController, type: :request do
   describe 'PUT /guessers/:id' do
     let(:valid_attr) { { initials: 'NBM' } }
 
-    context 'when the record exists' do
+    context 'when the record updates' do
       before { put "/guessers/#{guesser_id}", params: valid_attr }
 
       it 'updates the record' do
