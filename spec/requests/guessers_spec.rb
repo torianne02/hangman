@@ -50,5 +50,16 @@ RSpec.describe GuessersController, type: :request do
       end
     end 
 
+    context 'when the record does not exist' do
+      let(:guesser_id) { 100000 }
+
+      it 'returns status code 404' do 
+        expect(response).to have_http_status(404)
+      end 
+
+      it 'returns a not found message' do
+        expect(response.body).to match(/Couldn't find Guesser/)
+      end 
+    end
   end # GET guessers/:id
 end # RSpec 
