@@ -47,5 +47,17 @@ RSpec.describe SecretKeepersController do
         expect(json['id']).to eq(id)
       end 
     end 
+
+    context 'when guesser secret_keeper does not exist' do 
+      let(:id) { 0 }
+
+      it 'returns status code 404' do 
+        expect(response).to have_http_status(404)
+      end 
+
+      it 'returns a not found message' do 
+        expect(json['message']).to match(/Couldn't find SecretKeeper with 'id'=#{id}/)
+      end 
+    end 
   end # GET /guessers/:guesser_id/secret_keepers/:id
 end # RSpec
