@@ -38,7 +38,7 @@ RSpec.describe SecretKeepersController do
   describe 'GET /guessers/:guesser_id/secret_keepers/:id' do 
     before { get "/guessers/#{guesser_id}/secret_keepers/#{id}", params: {} }
 
-    context 'when guesser secret_keeper exists' do 
+    context 'when secret_keeper exists' do 
       it 'returns status code 200' do 
         expect(response).to have_http_status(200)
       end 
@@ -48,7 +48,7 @@ RSpec.describe SecretKeepersController do
       end 
     end 
 
-    context 'when guesser secret_keeper does not exist' do 
+    context 'when secret_keeper does not exist' do 
       let(:id) { 0 }
 
       it 'returns status code 404' do 
@@ -60,4 +60,22 @@ RSpec.describe SecretKeepersController do
       end 
     end 
   end # GET /guessers/:guesser_id/secret_keepers/:id
+
+  # test suite for PUT /guessers/:guesser_id/secret_keepers/:id
+  describe 'PUT /guessers/:guesser_id/secret_keepers/:id' do 
+    let(:valid_attr) { { word: 'alphabet' } }
+    before { put "/guessers/#{guesser_id}/secret_keepers/#{id}", params: valid_attr }
+
+    context 'when secret_keeper exists' do 
+      it 'returns status code 204' do 
+        expect(response).to have_http_status(204)
+      end 
+      
+      it 'updates the secret_keeper' do 
+        updated_secret_keeper = SecretKeeper.find(id)
+        expect(updated_secret_keeper.word).to eq('alphabet')
+      end 
+    end 
+  end # PUT /guessers/:guesser_id/secret_keepers/:id
+
 end # RSpec
