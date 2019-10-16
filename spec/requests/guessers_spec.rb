@@ -62,4 +62,21 @@ RSpec.describe GuessersController, type: :request do
       end 
     end
   end # GET guessers/:id
+
+  # test suite for PUT /guessers/:id
+  describe 'PUT /guessers/:id' do
+    let(:valid_attr) { { initials: 'NBM' } }
+
+    context 'when the record exists' do
+      before { put "/guessers/#{guesser_id}", params: valid_attr }
+
+      it 'updates the record' do
+        expect(response.body).to be_empty 
+      end 
+
+      it 'returns status code 204' do 
+        expect(response).to have_http_status(204)
+      end 
+    end
+  end # PUT guessers/:id
 end # RSpec 
