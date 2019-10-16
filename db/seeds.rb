@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+10.times do 
+  Guesser.create(initials: Faker::Name.initials(number: 3), password: Faker::Internet.password(min_length: 8, max_length: 16, mix_case: true))
+  SecretKeeper.create(word: Faker::Creature::Animal.name, guesser_id: Faker::Number.within(range: 1..10))
+end 
