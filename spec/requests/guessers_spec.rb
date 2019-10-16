@@ -11,7 +11,7 @@ RSpec.describe GuessersController, type: :request do
   # test suite for guesser sign-up
   describe 'POST /signup' do
     context 'when valid request' do
-      before { post '/signup', params: guesser_valid_attr.to_json }
+      before { post '/signup', params: guesser_valid_attr }
 
       it 'creates a new guesser' do 
         expect(response).to have_http_status(201)
