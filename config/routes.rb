@@ -3,5 +3,5 @@ Rails.application.routes.draw do
     resources :secret_keepers
   end 
   
-  post 'signup', to: 'guessers#create'
+  post '/signup', to: 'guessers#create'
 end
