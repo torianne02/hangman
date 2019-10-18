@@ -9,9 +9,9 @@
     <%= javascript_include_tag 'application' %>
     <nav class="navbar navbar-light" style="background-color: #F5F5DC;">
       <a class="navbar-brand" style="font-size: 30px;" href="/">PintTrackr</a>
-      <% if current_user %>
-        <%= link_to "Profile", user_path(current_user.id), class: "nav-link", style: 'color: #000000;' %>
-        <%= link_to "Update My Info", edit_user_path(current_user.id), class: "nav-link", style: 'color: #000000;' %>
+      <% if current_guesser %>
+        <%= link_to "Profile", guesser_path(current_guesser.id), class: "nav-link", style: 'color: #000000;' %>
+        <%= link_to "Update My Info", edit_guesser_path(current_guesser.id), class: "nav-link", style: 'color: #000000;' %>
         <%= link_to "Log Out", logout_path, class: "nav-link", style: 'color: #000000;' %>
       <% end %>
     </nav>
