@@ -10,11 +10,14 @@ class SessionsController < ApplicationController
 
     if @guesser && @guesser.authenticate(params[:password])
       session[:guesser_id] = @guesser.id
-      return session[:guesser_id]
+      redirect_to guesser_path(@guesser)
+    else 
+      redirect_to signin_path, notice: 'Initials and password do not match.'
     end 
   end 
 
   def destroy 
     session.delete :guesser_id 
+    redirect_to root_url, notice: "You have successfully logged out."
   end
 end 
