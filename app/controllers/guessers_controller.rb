@@ -1,28 +1,46 @@
 class GuessersController < ApplicationController
-  before_action :set_guesser, only: [:show, :update, :destroy]
-  before_action :current_guesser, except: [:new, :create]
+  before_action :set_guesser, only: %i[show update destroy]
+  before_action :current_guesser, except: %i[new create]
 
   # POST /signup
   def create 
     @guesser = Guesser.create!(guesser_params)
+
+    if @guesser 
+      session[:guesser_id] = @guesser.id
+      redirect_to guesser_url(@guesser)
+    else  
+      render :new, notice: "Please fill out all criteria."
+    end 
+
+    # code needed for tests
     response = { message: Message.account_created }
-    session[:guesser_id] = @guesser.id
     json_response(response, :created)
   end
 
   # GET /guessers/:id
   def show 
+    @games = @guesser.secret_keepers
     json_response(@guesser)
+  end 
+
+  def index 
+    @guessers = Guesser.all
   end 
 
   # PUT /guessers/:id
   def update 
-    @guesser.update(guesser_params)
+   if @guesser.update(guesser_params)
+      redirect_to guesser_url(@guesser), notice: "Your account has been updated."
+   else 
+    render :edit
+   end 
   end 
 
   # DELETE /guessers/:id
   def destroy 
     @guesser.destroy
+    redirect_to root_url, notice: "Your account has been deleted."
   end
 
   private
