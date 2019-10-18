@@ -4,5 +4,6 @@ Rails.application.routes.draw do
   end 
   
   post '/signup', to: 'guessers#create'
-  get '/login', to: 'sessions#new'
+  get '/signin', to: 'sessions#new'
+  get '/logout', to: 'sessions#destroy'
 end
