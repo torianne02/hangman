@@ -2,6 +2,10 @@ class GuessersController < ApplicationController
   before_action :set_guesser, only: %i[show update destroy]
   before_action :current_guesser, except: %i[new create]
 
+  def new 
+    @guesser = Guesser.new
+  end 
+
   # POST /signup
   def create 
     @guesser = Guesser.create!(guesser_params)
