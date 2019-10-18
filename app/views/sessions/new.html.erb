@@ -1,0 +1,16 @@
+<h3>Sign In</h3>
+
+<%= form_tag({ controller: 'sessions', action: 'create', method: 'post' }) do %>
+
+  <div class="form-group">
+    <%= label_tag :initials %>
+    <%= text_field_tag :initials %>
+  </div>
+
+  <div class="form-group">
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </div>
+
+  <%= submit_tag 'Sign In', class: "btn btn-outline-secondary" %>
+<% end %>

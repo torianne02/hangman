@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Hangman Game</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application' %>
+    <nav class="navbar navbar-light" style="background-color: #F5F5DC;">
+      <a class="navbar-brand" style="font-size: 30px;" href="/">PintTrackr</a>
+      <% if current_user %>
+        <%= link_to "Profile", user_path(current_user.id), class: "nav-link", style: 'color: #000000;' %>
+        <%= link_to "Update My Info", edit_user_path(current_user.id), class: "nav-link", style: 'color: #000000;' %>
+        <%= link_to "Log Out", logout_path, class: "nav-link", style: 'color: #000000;' %>
+      <% end %>
+    </nav>
+  </head>
+
+  <body>
+    <p><%= notice %></p>
+
+    <% if @message %>
+      <p><%= @message %></p>
+    <% end %>
+
+    <%= yield %>
+  </body>
+</html>
